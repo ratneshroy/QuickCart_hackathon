@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Search EditText -->
+    <SearchView
+        android:id="@+id/editTextSearch"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="48dp"
+        android:hint="Search..."
+        android:background="@drawable/edit_text_border"
+
+        android:drawableStart="@drawable/baseline_search_24"
+
+
+       />
+
+    <!-- Voice Search Icon -->
+    <ImageView
+        android:id="@+id/imageViewMic"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/baseline_mic_24"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Image Search Icon -->
+    <ImageView
+
+        android:id="@+id/imageViewImageSearch"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_toStartOf="@id/imageViewMic"
+        android:layout_centerVertical="true"
+        android:src="@drawable/baseline_image_search_24"
+        android:layout_marginEnd="16dp"/>
+</RelativeLayout>
