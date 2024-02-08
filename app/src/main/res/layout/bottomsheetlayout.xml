@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg">
+    <ImageView
+        android:id="@+id/closeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close"
+        android:layout_gravity="end"
+        android:layout_marginEnd="14dp"
+        />
+    <ImageView
+        android:id="@+id/selected_image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/img_1"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="1dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"/>
+
+
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_gravity="center">
+       <Button
+       android:id="@+id/pick_from_gallery_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Pick from Gallery"
+       android:layout_below="@id/selected_image_view"
+           android:background="@drawable/edit_text_border"
+       android:layout_marginTop="1dp"
+           android:layout_marginEnd="2dp"
+       android:layout_alignParentStart="true"/>
+
+
+       <Button
+           android:id="@+id/click_image_button"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/selected_image_view"
+           android:background="@drawable/edit_text_border"
+           android:layout_alignParentEnd="true"
+           android:layout_marginStart="2dp"
+           android:layout_marginTop="1dp"
+           android:text="Capture Image" />
+
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UID :"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/uid_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="UID"
+        android:inputType="text"
+        android:textSize="18dp"
+        android:layout_below="@id/pick_from_gallery_button"
+
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name :"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+        android:id="@+id/name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text"
+        android:layout_below="@id/uid_text_view"
+
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desc :"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        android:inputType="text"
+        android:layout_below="@id/name_edit_text"
+
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price :"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/price_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/description_edit_text"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qty :"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/quantity_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:inputType="number"
+        android:layout_below="@id/price_edit_text"
+       />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminateOnly="true"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/upload_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quantity_edit_text"
+        android:layout_gravity="center"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/edit_text_border"
+        android:text="Upload" />
+
+</LinearLayout>

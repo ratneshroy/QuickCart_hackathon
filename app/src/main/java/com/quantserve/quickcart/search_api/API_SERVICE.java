@@ -1,11 +1,14 @@
 package com.quantserve.quickcart.search_api;
 
+import com.quantserve.quickcart.product_search.ProductModel;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 public class API_SERVICE {
@@ -33,17 +36,22 @@ public class API_SERVICE {
     }
     public interface PostService{
 
-//        @Headers("Content-Type:application/json")
-//        @POST("/token/generate-token1")
-//        Call<ApiResponse> Usercheck(@Body UserAuthentication userAuthentication);
+
         @Headers({"Content-Type:application/json"})
         @POST("/search")
-        Call<api_response> GetAttendance(@Body ProductName productName);
+        Call<api_response> GetProductList(@Body ProductName productName);
 
-//        @Headers("Content-Type:application/json")
-//        @GET("CampusPortalSOA/image/studentPhoto")
-//        Call<ResponseBody> getPhoto();
+        @Headers("Content-Type:application/json")
+        @GET("/last_product_id")
+        Call<LastProductId> GetLast_product_id();
 
+        @Headers({"Content-Type:application/json"})
+        @POST("/add_product")
+        Call<AddProductResponse> AddNewProduct(@Body ProductModel productModel);
+
+        @Headers({"Content-Type:application/json"})
+        @POST("/update_product")
+        Call<AddProductResponse> UpdateProduct(@Body ProductModel productModel);
 
     }
 

@@ -1,18 +1,19 @@
 package com.quantserve.quickcart.product_search;
 
 public class ProductModel {
-    int id;
+    Integer id;
     String name;
     String description;
     String price;
-    int Qty;
+    Integer Qty;
     String image;
 
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,11 +41,11 @@ public class ProductModel {
         this.price = price;
     }
 
-    public int getQty() {
+    public Integer getQty() {
         return Qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(Integer qty) {
         Qty = qty;
     }
 
@@ -55,8 +56,6 @@ public class ProductModel {
     public void setImage(String image) {
         this.image = image;
     }
-
-
 
     public ProductModel(int id, String name, String description, String price, int qty, String image) {
         this.id = id;

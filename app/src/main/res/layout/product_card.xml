@@ -22,30 +22,49 @@
         android:layout_marginStart="16dp"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/productUidTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uid:"
+            android:textSize="16sp"
+            />
         <!-- Product Name -->
         <TextView
             android:id="@+id/productNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Product Name"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textSize="16sp"
+            />
 
         <!-- Product Price -->
         <TextView
             android:id="@+id/productPriceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$19.99"
+            android:text="₹19.99"
             android:textSize="16sp"
             android:textColor="@color/colorAccent"/>
+        <TextView
+            android:id="@+id/productQtyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Qty:"
+            android:textSize="16sp"
+            />
+
 
         <!-- Add to Cart Button -->
         <Button
-            android:id="@+id/addToCartButton"
+            android:layout_gravity="end"
+
+            android:id="@+id/editProductDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add to Cart"
-            android:layout_marginTop="8dp"/>
+            android:text="Edit"
+            android:textSize="10dp"
+            android:background="@drawable/edit_text_border"
+           />
     </LinearLayout>
 </RelativeLayout>

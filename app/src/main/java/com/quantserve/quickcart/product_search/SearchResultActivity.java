@@ -34,7 +34,7 @@ public class SearchResultActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(SearchResultActivity.this));
 
 
-        Call<api_response> res= API_SERVICE.getPostService().GetAttendance(new ProductName(productQuery));
+        Call<api_response> res= API_SERVICE.getPostService().GetProductList(new ProductName(productQuery));
         res.enqueue(new Callback<api_response>() {
             @Override
             public void onResponse(Call<api_response> call, Response<api_response> response) {
