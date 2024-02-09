@@ -26,7 +26,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.quantserve.quickcart.MainActivity;
+
 import com.quantserve.quickcart.R;
 import com.quantserve.quickcart.search_api.API_SERVICE;
 import com.quantserve.quickcart.search_api.AddProductResponse;
@@ -36,17 +36,18 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.internal.EverythingIsNonNull;
 
 public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.ProductViewHolder>{
     private List<ProductModel> productList;
-    //private ProductModel product;
-    private FirebaseStorage firebaseStorage;
-    private StorageReference storageReference;
+
+    private FirebaseStorage firebaseStorage=FirebaseStorage.getInstance();
+    private StorageReference storageReference=firebaseStorage.getReference();
     ImageView selectedImageView;
     TextView uidEditText;
     EditText nameEditText, descriptionEditText, priceEditText, quantityEditText;
     Button pickFromGalleryButton, clickImageButton, uploadButton;
-    Uri productImageUrl;
+
     ProgressBar progressBar;
 
     public ProductAdapter(List<ProductModel> productList) {
@@ -62,17 +63,16 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
        ProductModel product=productList.get(position);
-        firebaseStorage=FirebaseStorage.getInstance();
-        storageReference=firebaseStorage.getReference();
+
         StorageReference st=storageReference.child("Product Images/"+product.getImage());
 
         st.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                productImageUrl=uri;
+
                 Glide.with(holder.context).load(uri).error(R.drawable.ic_launcher_background)
                         .into(holder.productImageView);
             }
@@ -87,7 +87,7 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
         holder.update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showDialogUpdate(holder,product, holder.context,productImageUrl,position);
+                    showDialogUpdate(holder,product, holder.context,position);
                 }
             });
     }
@@ -115,7 +115,7 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
         }
     }
 
-    private void showDialogUpdate(ProductViewHolder holder,ProductModel productModel,Context context,Uri uri,int pos) {
+    private void showDialogUpdate(ProductViewHolder holder,ProductModel productModel,Context context,int pos) {
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheetlayout);
@@ -152,8 +152,21 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
         quantityEditText.setText(productModel.getQty().toString());
 
         /*-------------------------------------------------------------------------*/
-        Glide.with(context).load(uri).error(R.drawable.ic_launcher_background)
-                .into(selectedImageView);
+        StorageReference st=storageReference.child("Product Images/"+productModel.getImage());
+
+        st.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+
+                Glide.with(holder.context).load(uri).error(R.drawable.ic_launcher_background)
+                        .into(selectedImageView);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,7 +185,7 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
                 res.enqueue(new Callback<AddProductResponse>() {
                     @Override
                     public void onResponse(Call<AddProductResponse> call, Response<AddProductResponse> response) {
-                        Toast.makeText(context, "Product details updated successfully2", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Product details updated successfully", Toast.LENGTH_SHORT).show();
                         setProductDetails(holder,updatedProduct);
                         productList.set(pos,updatedProduct);
 
