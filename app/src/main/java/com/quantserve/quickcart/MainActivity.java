@@ -151,6 +151,11 @@ public class MainActivity extends AppCompatActivity {
                 showDialog();
             }
         });
+        boolean openANPButton = getIntent().getBooleanExtra("openANPButton", false);
+        if (openANPButton) {
+            // Trigger the click event for aNPButton
+            aNPButton.performClick();
+        }
 
 
     }
@@ -279,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
                                 }
                             });
+
                 }
 
 
@@ -345,4 +351,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }
