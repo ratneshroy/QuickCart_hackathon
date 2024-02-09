@@ -217,8 +217,10 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
         holder.productUidTextView.setText("Uid: "+ product.getId());
         holder.productName.setText("Name: "+product.getName());
         holder.productPrice.setText("Price: ₹"+product.getPrice());
-        if(product.getQty()>0)
-        holder.productQtyTextView.setText("Qty: "+ product.getQty());
+        if(product.getQty()>0) {
+            holder.productQtyTextView.setText("Qty: " + product.getQty());
+            holder.productQtyTextView.setTextColor(holder.itemView.getResources().getColor(R.color.black));
+        }
         else {
             holder.productQtyTextView.setText("Not Available");
             holder.productQtyTextView.setTextColor(holder.itemView.getResources().getColor(R.color.red));
