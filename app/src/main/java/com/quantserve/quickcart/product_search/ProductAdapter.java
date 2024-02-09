@@ -87,7 +87,7 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
         holder.update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showDialogUpdate(holder,product, holder.context,position);
+                    showDialogUpdate(holder,holder.context,position);
                 }
             });
     }
@@ -115,7 +115,8 @@ public class ProductAdapter extends RecyclerView.Adapter <ProductAdapter.Product
         }
     }
 
-    private void showDialogUpdate(ProductViewHolder holder,ProductModel productModel,Context context,int pos) {
+    private void showDialogUpdate(ProductViewHolder holder,Context context,int pos) {
+        ProductModel productModel=productList.get(pos);
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.bottomsheetlayout);
